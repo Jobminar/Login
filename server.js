@@ -1,10 +1,9 @@
-
 import express from 'express';
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
+import bcrypt from 'bcryptjs'; // Import bcryptjs instead of bcrypt
 import Login from './Model.js';
 import dotenv from 'dotenv';
 
@@ -21,8 +20,8 @@ const EMAIL_USERNAME = process.env.EMAIL_USERNAME;
 const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD;
 
 mongoose.connect(MONGODB_URI, {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
   .then(() => console.log(`MongoDB connected successfully to ${MONGODB_URI}`))
   .catch((error) => console.error("Error connecting to MongoDB:", error));
